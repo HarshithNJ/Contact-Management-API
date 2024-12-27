@@ -1,5 +1,8 @@
 package org.contact.contact.repository;
 
-public interface contactRepository {
+import org.contact.contact.dto.contact;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface contactRepository extends JpaRepository<contact, Integer>{
 
 }

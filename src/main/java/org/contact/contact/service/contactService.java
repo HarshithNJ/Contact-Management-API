@@ -1,6 +1,7 @@
 package org.contact.contact.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.contact.contact.dto.contact;
@@ -39,6 +40,23 @@ public class contactService {
             map.put("Data", contact);
 
             return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<Object> getAllContacts() {
+        List<contact> contacts = repository.findAll();
+
+        if(contacts.isEmpty()){
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("error", "No Data Found");
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }else{
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("success", "Data Found");
+            map.put("Data", contacts);
+
+            return new ResponseEntity<Object>(map, HttpStatus.FOUND);
         }
     }
     

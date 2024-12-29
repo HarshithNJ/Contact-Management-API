@@ -23,13 +23,13 @@ public class contactService {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("error", "Name Already Exists");
 
-            if(contact.getPhoneNumber()> 10000000000L){
+            // if(contact.getPhoneNumber()> 10000000000L){
 
-                Map<String, Object> map1 = new HashMap<String, Object>();
-                map1.put("error", "Length of phone number must not exceed 10 digits");
+            //     Map<String, Object> map1 = new HashMap<String, Object>();
+            //     map1.put("error", "Length of phone number must not exceed 10 digits");
    
-                return new ResponseEntity<Object>(map1, HttpStatus.BAD_REQUEST);
-            }
+            //     return new ResponseEntity<Object>(map1, HttpStatus.BAD_REQUEST);
+            // }
 
             return new ResponseEntity<Object>(map, HttpStatus.BAD_REQUEST);
         }else{

@@ -1,6 +1,5 @@
 package org.contact.contact.controller;
 
-import java.util.List;
 
 import org.contact.contact.dto.contact;
 import org.contact.contact.service.contactService;

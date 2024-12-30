@@ -85,6 +85,23 @@ public class contactService {
         }
 
     }
+
+    public ResponseEntity<Object> getDataByAddress(String address) {
+        List<contact> contacts = repository.findByAddress(address);
+
+        if (contacts.isEmpty()) {
+            Map<String,Object> map = new HashMap<String, Object>();
+            map.put("error", "No Data Found");
+
+            return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
+        }else{
+            Map<String,Object> map = new HashMap<String, Object>();
+            map.put("success", "Data Found");
+            map.put("Data", contacts);
+
+            return new ResponseEntity<Object>(map, HttpStatus.FOUND);
+        }
+    }
     
     
 }

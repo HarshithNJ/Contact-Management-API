@@ -43,5 +43,10 @@ public class contactController {
     public ResponseEntity<Object> getDataByPhoneNumber(@PathVariable long phoneNumber){
         return service.getDataByPhoneNumber(phoneNumber);
     }
+
+    @GetMapping("/contacts/find/address/{address}")
+    public ResponseEntity<Object> getDataByAddress(@PathVariable String address){
+        return service.getDataByAddress(address);
+    }
     
 }

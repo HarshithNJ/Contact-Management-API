@@ -1,5 +1,6 @@
 package org.contact.contact.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.contact.contact.dto.contact;
@@ -12,5 +13,7 @@ public interface contactRepository extends JpaRepository<contact, Integer>{
     Optional<contact> findByName(String name);
 
     Optional<contact> findByPhoneNumber(long phoneNumber);
+
+    List<contact> findByAddress(String address);
 
 }

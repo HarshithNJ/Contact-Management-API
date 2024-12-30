@@ -121,6 +121,37 @@ public class contactService {
             return new ResponseEntity<Object>(map, HttpStatus.NO_CONTENT);
         }
     }
+
+    public ResponseEntity<Object> updateContact(int id, contact contact) {
+        if(repository.findById(id).isPresent()){
+            contact contacts = repository.findById(id).get();
+
+            if(contact.getName() != null)
+                contacts.setName(contact.getName());
+
+            if(contact.getEmail() != null)
+                contacts.setEmail(contact.getEmail());
+
+            if(contact.getPhoneNumber() != 0)
+                contacts.setPhoneNumber(contact.getPhoneNumber());
+
+            if(contact.getAddress() != null)
+                contacts.setAddress(contact.getAddress());
+
+            repository.save(contacts);
+
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("success", "Data Updated Successfully");
+            map.put("Data", contacts);
+
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }else{
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("error", "No Data Found with the id: " + id);
+
+            return new ResponseEntity<Object>(map, HttpStatus.NO_CONTENT);
+        }
+    }
     
     
 }

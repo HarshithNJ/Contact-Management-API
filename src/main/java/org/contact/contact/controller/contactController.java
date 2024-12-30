@@ -7,6 +7,7 @@ import org.contact.contact.service.contactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,6 +48,13 @@ public class contactController {
     @GetMapping("/contacts/find/address/{address}")
     public ResponseEntity<Object> getDataByAddress(@PathVariable String address){
         return service.getDataByAddress(address);
+    }
+
+
+    //To delete a record
+    @DeleteMapping("/contacts/{id}")
+    public ResponseEntity<Object> deleteContact(@PathVariable int id){
+        return service.deleteContact(id);
     }
     
 }

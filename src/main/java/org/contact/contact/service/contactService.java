@@ -102,6 +102,25 @@ public class contactService {
             return new ResponseEntity<Object>(map, HttpStatus.FOUND);
         }
     }
+
+    public ResponseEntity<Object> deleteContact(int id) {
+        Optional<contact> op = repository.findById(id);
+
+        if(op.isPresent()){
+            repository.deleteById(id);
+
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("success", "Data Deleted Successfully");
+            map.put("Data", op.get());
+
+            return new ResponseEntity<Object>(map, HttpStatus.OK);
+        }else{
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("error", "No Data Found with the id: " + id);
+
+            return new ResponseEntity<Object>(map, HttpStatus.NO_CONTENT);
+        }
+    }
     
     
 }
